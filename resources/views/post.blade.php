@@ -63,11 +63,15 @@
                      data-href="https://developers.facebook.com/docs/plugins/"
                      data-share="true">
 
-                    <button type="submit" class="btn btn-primary">
-                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?
-                        u={{ url()->current() }}"
-                           class="social-button " id="" style="color:white">FB Post</a>
-                    </button>
+                    <form action="{{ route('publishToPage')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="link" value="{{ url()->current() }}">
+                        <hr />
+                        <button type="submit" class="btn btn-primary">
+
+                            FB Post </button>
+                    </form>
+
 
                 </div>
                 <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
@@ -95,8 +99,7 @@
                      data-href="https://api.twitter.com"
                      data-share="true">
                     <button type="submit" class="btn btn-primary">
-                        <a target="_blank" href="https://twitter.com/intent/tweet?text= &
-                        url= {{url()->current()}}"
+                        <a target="_blank" href="https://twitter.com/intent/tweet?text= &url= {{ url()->current() }}"
                            class="social-button " id="" style="color:white"> Tweet </a>
                     </button>
                 </div>

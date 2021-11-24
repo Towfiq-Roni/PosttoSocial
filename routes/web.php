@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GraphController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -47,11 +48,18 @@ Route::get('/profile', [PostController::class, 'profile']);
 
 Route::post('/changepass',  [HomeController::class,'changePassword'])->name('changePassword');
 
-Route::get('/comments', [CommentController::class, 'touscomments'])->name('touscomments');
+Route::get('/comments', [CommentController::class, 'AddComments'])->name('AddComments');
 
 Route::post('/profile/edit',  [HomeController::class,'editProfile'])->name('editProfile');
 Route::get('/listeusers', [HomeController::class, 'listeUsers'])->name('users');
-Route::get('/user', 'GraphController@retrieveUserProfile');
-Route::post('/user', 'GraphController@publishToProfile');
-Route::post('/page', 'GraphController@publishToPage');
+
+Route::group(['middleware' => [
+    'auth'
+]], function(){
+    Route::get('/user', 'GraphController@retrieveUserProfile');
+
+    Route::post('/user', 'GraphController@publishToProfile');
+
+    Route::post('/share-to-fb-page', [GraphController::class, 'publishToPage'])->name('publishToPage');
+});
 

@@ -16,7 +16,7 @@
                   <div class="card text-white bg-black m-3 col-5" style="max-width: 18rem;">
                     <div class="card-header">Total Comments <span class="badge bg-secondary">({{ count (Auth::user()->comments)}})</span>  </div>
                     <div class="card-body">
-                     <a href="{{ route ('touscomments')}}" type="button" class="btn btn-primary" > Details</a>
+                     <a href="{{ route ('AddComments')}}" type="button" class="btn btn-primary" > Details</a>
                     </div>
                 </div>
             </div>

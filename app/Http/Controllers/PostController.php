@@ -28,7 +28,7 @@ class PostController extends Controller
       }else{
         return view ('Admin.profile');
       }
-      
+
     }
 
     /**
@@ -54,40 +54,40 @@ class PostController extends Controller
     {
 
 
-         // Validation 
+         // Validation
     //   $request->validate([
     //     'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
-    //   ]); 
+    //   ]);
 
-      // reponse mel input 
+      // reponse mel input
       $file = $request->file('image');
-   
+
       //Display File Name (ism l fichier)
     //   echo 'File Name: '.$file->getClientOriginalName();
     //   echo '<br>';
-   
+
       //Display File Extension
     //   echo 'File Extension: '.$file->getClientOriginalExtension();
     //   echo '<br>';
-   
+
       //Display File Real Path (win mawjouda fl pc mta3na)
     //   echo 'File Real Path: '.$file->getRealPath();
     //   echo '<br>';
-   
+
       //Display File Size
     //   echo 'File Size: '.$file->getSize();
     //   echo '<br>';
-   
+
       //Display File Mime Type
     //   echo 'File Mime Type: '.$file->getMimeType();
-   
+
       //Move Uploaded File
       $destinationPath = 'uploads'; // par defaut yefhim eli hya mahtouta ta7t l public
 
         // si bech najoutiw nefs lphoto lazemna nesta3mlou uniqid bech maybadlelnech nom li9dim y7ot nom men aandou jdid.
 
     $newName = uniqid().".".$file->getClientOriginalExtension();
-      
+
       // yekhou name mta3ha w ba3d move yaani y7awelha Lel destinationPath( uploads)
     //   $file->move($destinationPath,$file->getClientOriginalName());
 
@@ -103,7 +103,7 @@ class PostController extends Controller
         $p->image = $newName;
          $p->createur = Auth::user()->id;
          $p->category = $request->category;
-        
+
          $p->save();
          return redirect('/client/allposts');
 
@@ -119,8 +119,8 @@ class PostController extends Controller
     {
       $p = Post::find($id);
 
-      return view ('post')->with('post', $p); 
-        
+      return view ('post')->with('post', $p);
+
     }
 
     /**
@@ -144,5 +144,4 @@ class PostController extends Controller
       $posts = Post::orderBy('created_at','desc')->get();
       return view ('Admin.posts')->with('posts', $posts);
     }
-    
 }

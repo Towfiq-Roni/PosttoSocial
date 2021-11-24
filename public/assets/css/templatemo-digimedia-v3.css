@@ -23,15 +23,15 @@ Table of contents
 12. portfolio
 
 --------------------------------------------- */
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
@@ -135,10 +135,10 @@ img {
   overflow: hidden;
 }
 
-/* 
+/*
 ---------------------------------------------
 global styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -226,10 +226,10 @@ body {
 
 
 
-/* 
+/*
 ---------------------------------------------
 header
---------------------------------------------- 
+---------------------------------------------
 */
 
 .pre-header {
@@ -770,10 +770,10 @@ header
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 preloader
---------------------------------------------- 
+---------------------------------------------
 */
 
 .js-preloader {
@@ -872,10 +872,10 @@ preloader
 
 
 
-/* 
+/*
 ---------------------------------------------
 Banner Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .main-banner {
@@ -950,10 +950,10 @@ Banner Style
 
 
 
-/* 
+/*
 ---------------------------------------------
 About Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 #about {
@@ -1041,8 +1041,10 @@ About Style
   border-top-right-radius: 75px;
   border-bottom-right-radius: 75px;
   border-left: 0;
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
+    /*noinspection CssInvalidPropertyValue*/
+    -webkit-transform-origin: center left;
+    /*noinspection CssInvalidPropertyValue*/
+    transform-origin: center left;
 }
 .progress .progress-right {
   right: 0;
@@ -1052,8 +1054,10 @@ About Style
   border-top-left-radius: 75px;
   border-bottom-left-radius: 75px;
   border-right: 0;
-  -webkit-transform-origin: center right;
-  transform-origin: center right;
+    /*noinspection CssInvalidPropertyValue*/
+    -webkit-transform-origin: center right;
+    /*noinspection CssInvalidPropertyValue*/
+    transform-origin: center right;
 }
 .progress .progress-value {
   text-align: center;
@@ -1079,8 +1083,8 @@ About Style
   font-weight: 300;
 }
 
-/* This for loop creates the  necessary css animation names 
-Due to the split circle of progress-left and progress right, we must use the animations on each side. 
+/* This for loop creates the  necessary css animation names
+Due to the split circle of progress-left and progress right, we must use the animations on each side.
 */
 .progress[data-percentage="10"] .progress-right .progress-bar {
   animation: loading-1 1.5s linear forwards;
@@ -1157,7 +1161,8 @@ Due to the split circle of progress-left and progress right, we must use the ani
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  100% {
+    /*noinspection ALL*/
+    100% {
     -webkit-transform: rotate(36);
     transform: rotate(36deg);
   }
@@ -1167,7 +1172,8 @@ Due to the split circle of progress-left and progress right, we must use the ani
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  100% {
+    /*noinspection ALL*/
+    100% {
     -webkit-transform: rotate(72);
     transform: rotate(72deg);
   }
@@ -1177,7 +1183,8 @@ Due to the split circle of progress-left and progress right, we must use the ani
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  100% {
+    /*noinspection ALL*/
+    100% {
     -webkit-transform: rotate(108);
     transform: rotate(108deg);
   }
@@ -1187,7 +1194,8 @@ Due to the split circle of progress-left and progress right, we must use the ani
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  100% {
+    /*noinspection ALL*/
+    100% {
     -webkit-transform: rotate(144);
     transform: rotate(144deg);
   }
@@ -1197,7 +1205,8 @@ Due to the split circle of progress-left and progress right, we must use the ani
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  100% {
+    /*noinspection ALL*/
+    100% {
     -webkit-transform: rotate(180);
     transform: rotate(180deg);
   }
@@ -1206,10 +1215,10 @@ Due to the split circle of progress-left and progress right, we must use the ani
   margin-bottom: 1em;
 }
 
-/* 
+/*
 ---------------------------------------------
 Services Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .services {
@@ -1387,10 +1396,10 @@ Services Style
 
 
 
-/* 
+/*
 ---------------------------------------------
 Free Quote
---------------------------------------------- 
+---------------------------------------------
 */
 
 .free-quote {
@@ -1461,10 +1470,10 @@ Free Quote
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Portfolio
---------------------------------------------- 
+---------------------------------------------
 */
 
 .our-portfolio {
@@ -1588,10 +1597,10 @@ Portfolio
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Blog
---------------------------------------------- 
+---------------------------------------------
 */
 
 .blog:before {
@@ -1744,10 +1753,10 @@ Blog
 }
 
 
-/* 
+/*
 ---------------------------------------------
 contact
---------------------------------------------- 
+---------------------------------------------
 */
 
 .contact-us {
@@ -1907,10 +1916,10 @@ form#contact button:hover {
   color: #fff!important;
 }
 
-/* 
+/*
 ---------------------------------------------
 Footer Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 footer {
@@ -1932,10 +1941,10 @@ footer p a {
   transition: all .5s;
 }
 
-/* 
+/*
 ---------------------------------------------
 responsive
---------------------------------------------- 
+---------------------------------------------
 */
 
 @media (max-width: 1200px) {

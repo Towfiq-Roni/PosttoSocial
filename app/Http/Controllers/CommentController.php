@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
@@ -14,13 +14,13 @@ class CommentController extends Controller
         $comment->post_id = $request->post_id;
         $comment->content = $request->content;
         $comment->save();
-        return redirect()->back(); 
+        return redirect()->back();
 
     }
-    public function touscomments(){
-        
+    public function AddComments(){
+
         $c= Comment::orderBy('created_at','desc')->paginate(4);
-       
+
         if (Auth::user()->role =='client') {
             return view('Client.Comments');
         }else{

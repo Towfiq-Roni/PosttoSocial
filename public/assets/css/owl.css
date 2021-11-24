@@ -149,6 +149,7 @@
   height: 100%;
   background: #000; }
 
+/*noinspection CssUnknownTarget*/
 .owl-carousel .owl-video-play-icon {
   position: absolute;
   height: 80px;
