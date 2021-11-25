@@ -7,48 +7,17 @@ use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class GraphController extends Controller
+class LinkedInController extends Controller
 {
-    /** @var Facebook */
     private $api;
-    public function __construct(Facebook $fb)
+    public function __construct(LinkedIn $li)
     {
-        $this->middleware(function ($request, $next) use ($fb) {
+        $this->middleware(function ($request, $next) use ($li) {
             // $fb->setDefaultAccessToken(Auth::user()->token);
-            $this->api = $fb;
+            $this->api = $li;
             return $next($request);
         });
-    }
-
-    public function retrieveUserProfile(){
-        try {
-
-            $params = "first_name,last_name,age_range,gender";
-
-            $user = $this->api->get('/me?fields='.$params)->getGraphUser();
-
-            dd($user);
-
-        } catch (FacebookSDKException $e) {
-
-        }
-
-    }
-
-    public function publishToProfile(Request $request){
-
-        try {
-            $response = $this->api->post('/me/feed', [
-                'message' => $request->message
-            ])->getGraphNode()->asArray();
-            if($response['id']){
-                // post created
-            }
-        } catch (FacebookSDKException $e) {
-            dd($e); // handle exception
-        }
     }
 
     public function getPageAccessToken($page_id){
@@ -67,7 +36,7 @@ class GraphController extends Controller
 
             $url = "https://graph.facebook.com/$page_id?";
             $url .= "fields=access_token&";
-            $url .= "access_token=EAAOZB6ZCDsEt0BANAj4sotZAvTmisuZCd5wbjk5tZANUcWAzmdT8ZAIO52DtW41R820a2UWA9wM6jiUZAcgmX6zBDJwxbOI01bShX9Jg4DhGwZAVcAK6cw02shf6ZChzXkTUudWgFHnpsx78D1CuHGmsAN9ml04fmiDdtCo0oS9VdCyowdUfAXUpWID7jThGoUhI98kKEXgJeLuzNEOZByaU5vspGnDBTnToAZD";
+            $url .= "access_token=AQUi2Porkz7gQldgeRFnC-na7yO4fEVBPmy8sUvB0zMHZn5SWFvs4fLcOHwUvfG_KKqL9DTbg7IRDifSpq2KeAARFa0q-hXUN6cQcO1exYuEXYj6thJAF3L57ODUv6U4oFzuyKTxKLKWtDdXht0GSQkNB0IlVhIJQwdHKqYBfr_hU2OOyp0zAMWXIdT6gZyxPnRo31EwFSdwBcHPrsq3LpBq78XwAI0pYtLRWsSB4MjYtEByNh1XfmO4RvmGlo7IYAvprrj435_9r4HcvTyWJttUK5tcjW_don8L8lbQ129rrYuTTmKvIGwk9F3o-pwy7U9N_AwNqbZGj38K0uSZoVdACgCh8w";
 
             $response = (new Client())->get($url);
             dd(json_decode($response->getBody())->access_token);
@@ -80,7 +49,7 @@ class GraphController extends Controller
         } catch(FacebookSDKException $e) {
             dd($e);
             // When validation fails or other local issues
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            echo 'LinkedInServiceProvider SDK returned an error: ' . $e->getMessage();
             exit;
         }
 
@@ -92,28 +61,22 @@ class GraphController extends Controller
                     return $key['access_token'];
                 }
             }
-        } catch (FacebookSDKException $e) {
+        } catch (LinkedInSDKException $e) {
             dd($e); // handle exception
         }
     }
 
-    public function publishToPage(Request $request){
+    public function publishToPageli(Request $request){
 
-        $page_id = '2010348462570698';
+        $page_id = '74503391';
 
         // dd($this->getPageAccessToken($page_id));
 
-        try {
-            $page_token = "EAAOZB6ZCDsEt0BANAj4sotZAvTmisuZCd5wbjk5tZANUcWAzmdT8ZAIO52DtW41R820a2UWA9wM6jiUZAcgmX6zBDJwxbOI01bShX9Jg4DhGwZAVcAK6cw02shf6ZChzXkTUudWgFHnpsx78D1CuHGmsAN9ml04fmiDdtCo0oS9VdCyowdUfAXUpWID7jThGoUhI98kKEXgJeLuzNEOZByaU5vspGnDBTnToAZD";
-            $url = "https://graph.facebook.com/$page_id/feed";
-            $url .= "?link=" . $request->link;
-            $url .= "&access_token=$page_token";
+        $page_token = "AQUi2Porkz7gQldgeRFnC-na7yO4fEVBPmy8sUvB0zMHZn5SWFvs4fLcOHwUvfG_KKqL9DTbg7IRDifSpq2KeAARFa0q-hXUN6cQcO1exYuEXYj6thJAF3L57ODUv6U4oFzuyKTxKLKWtDdXht0GSQkNB0IlVhIJQwdHKqYBfr_hU2OOyp0zAMWXIdT6gZyxPnRo31EwFSdwBcHPrsq3LpBq78XwAI0pYtLRWsSB4MjYtEByNh1XfmO4RvmGlo7IYAvprrj435_9r4HcvTyWJttUK5tcjW_don8L8lbQ129rrYuTTmKvIGwk9F3o-pwy7U9N_AwNqbZGj38K0uSZoVdACgCh8w";
+        $url = "https://graph.facebook.com/$page_id/feed";
+        $url .= "?link=" . $request->link;
+        $url .= "&access_token=$page_token";
 
-            $response = (new Client())->post($url);
-            //dd(json_decode($response->getBody()));
-
-    } catch (FacebookSDKException $e) {
-            dd($e); // handle exception
-        }
+        $response = (new Client())->post($url);
     }
 }

@@ -63,7 +63,7 @@
                      data-href="https://developers.facebook.com/docs/plugins/"
                      data-share="true">
 
-                    <form action="{{ route('publishToPage')}}" method="POST">
+                    <form action="{{ route('publishToPage') }}" method="POST">
                         @csrf
                         <input type="hidden" name="link" value="{{ url()->current() }}">
                         <hr />
@@ -85,11 +85,14 @@
                      data-href="https://platform.linkedin.com"
                      data-share="true">
 
-                    <button type="submit" class="btn btn-primary">
-                        <a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?
-                        url={{url()->current()}}"
-                           class="social-button " id="" style="color:white">LinkedIn Post</a>
-                    </button>
+                    <form action="{{ route('publishToPageli') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="link" value="{{ url()->current() }}">
+                        <hr />
+                        <button type="submit" class="btn btn-primary">
+
+                            LinkedIn Post </button>
+                    </form>
                 </div>
                 <div class="twitter-share"
                      data-layout="standard"

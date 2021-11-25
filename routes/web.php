@@ -61,5 +61,7 @@ Route::group(['middleware' => [
     Route::post('/user', 'GraphController@publishToProfile');
 
     Route::post('/share-to-fb-page', [GraphController::class, 'publishToPage'])->name('publishToPage');
+
+    Route::post('/share-to-li-page', [LinkedInController::class, 'publishToPageli'])->name('publishToPageli');
 });
 
