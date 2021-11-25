@@ -42,11 +42,11 @@ class LinkedInController extends Controller
             dd(json_decode($response->getBody())->access_token);
 
         }
-        catch(FacebookResponseException $e) {
+        catch(LinkedInResponseException $e) {
             // When Graph returns an error
             echo 'Graph returned an error: ' . $e->getMessage();
             exit;
-        } catch(FacebookSDKException $e) {
+        } catch(LinkedInSDKException $e) {
             dd($e);
             // When validation fails or other local issues
             echo 'LinkedInServiceProvider SDK returned an error: ' . $e->getMessage();
@@ -73,10 +73,11 @@ class LinkedInController extends Controller
         // dd($this->getPageAccessToken($page_id));
 
         $page_token = "AQUi2Porkz7gQldgeRFnC-na7yO4fEVBPmy8sUvB0zMHZn5SWFvs4fLcOHwUvfG_KKqL9DTbg7IRDifSpq2KeAARFa0q-hXUN6cQcO1exYuEXYj6thJAF3L57ODUv6U4oFzuyKTxKLKWtDdXht0GSQkNB0IlVhIJQwdHKqYBfr_hU2OOyp0zAMWXIdT6gZyxPnRo31EwFSdwBcHPrsq3LpBq78XwAI0pYtLRWsSB4MjYtEByNh1XfmO4RvmGlo7IYAvprrj435_9r4HcvTyWJttUK5tcjW_don8L8lbQ129rrYuTTmKvIGwk9F3o-pwy7U9N_AwNqbZGj38K0uSZoVdACgCh8w";
-        $url = "https://graph.facebook.com/$page_id/feed";
+        $url = "https://api.linkedin.com/company/$page_id";
         $url .= "?link=" . $request->link;
         $url .= "&access_token=$page_token";
 
         $response = (new Client())->post($url);
+
     }
 }
